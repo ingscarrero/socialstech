@@ -1,0 +1,26 @@
+module.exports = {
+	facebookAuth:{
+		"clientID":"your-client-id",
+		"clientSecret":"your-client-secret",
+		"callbackURL":"http://localhost:3000/security/auth/facebook",
+		"issuer":"APP_NAME",
+	},
+	twitterAuth:{
+		"consumerKey":"",
+		"consumerSecret":"",
+		"callbackURL":"http://localhost:3000/security/auth/twitter",
+		"issuer":"APP_NAME",
+	},
+	googleAuth:{
+		"clientID":"",
+		"clientSecret":"",
+		"callbackURL":"http://localhost:3000/security/auth/google",
+		"issuer":"APP_NAME",
+	}, 
+	localAuth:{
+		"secret":"your-app-secret",
+		"database":"mongodb://localhost:27017/security/auth",
+		"issuer":"APP_NAME",
+		"expiration":1440
+	}
+}
