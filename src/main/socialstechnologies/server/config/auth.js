@@ -19,7 +19,7 @@ module.exports = {
 	}, 
 	localAuth:{
 		"secret":"your-app-secret",
-		"database":"mongodb://mongodb://userQBD:uLTwAk2BiMENDcW1@mongodb/security",
+		"database":"mongodb://userQBD:uLTwAk2BiMENDcW1@172.30.220.178:27017/security",
 		"issuer":"APP_NAME",
 		"expiration":1440
 	}
