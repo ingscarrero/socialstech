@@ -1,7 +1,6 @@
-var auth = require('../config/auth');
 var mongoose = require('mongoose');
 console.log('Will connect to security model.');
-var connection = mongoose.createConnection(auth.localAuth.database);
+var connection = mongoose.createConnection(process.env.MONGO_DB_SECURITY);
 var Schema = mongoose.Schema;
 
 module.exports = {

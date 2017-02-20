@@ -1,7 +1,6 @@
-var busdom = require('../config/busdom');
 var mongoose = require('mongoose');
 console.log('Will connect to security model.');
-var connection = mongoose.createConnection(busdom.site.database);
+var connection = mongoose.createConnection(process.env.MONGO_DB_BDOMAIN);
 var Schema = mongoose.Schema;
 
 module.exports = {
