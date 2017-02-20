@@ -1,7 +1,6 @@
 // security.js
 var express = require('express');
 var auth = require('../config/auth');
-var express = require('express');
 var mongoose = require('mongoose');
 var model = require('../model/security');
 var jwt = require("jsonwebtoken");
