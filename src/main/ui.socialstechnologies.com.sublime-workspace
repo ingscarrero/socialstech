@@ -1,0 +1,863 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"u",
+				"uppercase"
+			],
+			[
+				"transfor",
+				"text-transform"
+			],
+			[
+				"bode",
+				"border-width"
+			],
+			[
+				"v",
+				"vertical-align"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"text-a",
+				"text-align"
+			],
+			[
+				"border-bottom",
+				"border-bottom-color"
+			],
+			[
+				"borde",
+				"border-bottom"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"contact",
+				"contactRequest"
+			],
+			[
+				"con",
+				"contactRequest"
+			],
+			[
+				"mas",
+				"masthead-nav"
+			],
+			[
+				"fin",
+				"findById"
+			],
+			[
+				"sec",
+				"securityDomain"
+			],
+			[
+				"va",
+				"validateToken"
+			],
+			[
+				"up",
+				"updatedIdentity"
+			],
+			[
+				"pr",
+				"profile"
+			],
+			[
+				"valida",
+				"validateToken"
+			],
+			[
+				"e",
+				"error"
+			],
+			[
+				"full",
+				"full_name"
+			],
+			[
+				"pro",
+				"profile"
+			],
+			[
+				"p",
+				"profile"
+			],
+			[
+				"us",
+				"userId"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"res",
+				"resolve"
+			],
+			[
+				"get",
+				"generatedToken"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"ex",
+				"ex"
+			],
+			[
+				"re",
+				"req"
+			],
+			[
+				"secu",
+				"securityDomain"
+			],
+			[
+				"ide",
+				"identity"
+			],
+			[
+				"fi",
+				"findIdentity"
+			],
+			[
+				"iden",
+				"identity"
+			],
+			[
+				"find",
+				"findOne"
+			],
+			[
+				"cr",
+				"credential"
+			],
+			[
+				"a",
+				"authorization"
+			],
+			[
+				"err",
+				"error"
+			],
+			[
+				"conta",
+				"contactId"
+			],
+			[
+				"crede",
+				"credentialIdentifier"
+			],
+			[
+				"inter",
+				"internalUserId"
+			],
+			[
+				"se",
+				"securityDomain"
+			],
+			[
+				"cre",
+				"credential"
+			],
+			[
+				"findByI",
+				"findUserById"
+			],
+			[
+				"user",
+				"userIdentifier"
+			],
+			[
+				"vali",
+				"validateToken"
+			],
+			[
+				"au",
+				"authenticateWithProvider"
+			],
+			[
+				"er",
+				"err"
+			],
+			[
+				"use",
+				"user"
+			],
+			[
+				"if",
+				"ife\tif … else"
+			],
+			[
+				"ca",
+				"catch"
+			],
+			[
+				"erro",
+				"error"
+			],
+			[
+				"id",
+				"id"
+			],
+			[
+				"regis",
+				"registeredIdentity"
+			],
+			[
+				"regi",
+				"registeredIdentity"
+			],
+			[
+				"crea",
+				"createUser"
+			],
+			[
+				"new",
+				"newUser"
+			],
+			[
+				"t",
+				"twitter"
+			],
+			[
+				"upda",
+				"updatedIdentity"
+			],
+			[
+				"to",
+				"token"
+			],
+			[
+				"auth",
+				"authorization"
+			],
+			[
+				"gene",
+				"generateToken"
+			],
+			[
+				"en",
+				"ensureIsAuthenticated"
+			],
+			[
+				"val",
+				"validateToken"
+			],
+			[
+				"is",
+				"isLocal"
+			],
+			[
+				"ret",
+				"retrieved"
+			],
+			[
+				"r",
+				"router"
+			],
+			[
+				"tw",
+				"twitter"
+			],
+			[
+				"face",
+				"facebook"
+			],
+			[
+				"jwt",
+				"jwtOptions"
+			],
+			[
+				"profi",
+				"profileId"
+			],
+			[
+				"prof",
+				"profileId"
+			],
+			[
+				"jw",
+				"jwtOptions"
+			],
+			[
+				"ind",
+				"internalUserId"
+			],
+			[
+				"retu",
+				"return"
+			],
+			[
+				"in",
+				"internalUserId"
+			],
+			[
+				"local",
+				"localAuth"
+			],
+			[
+				"j",
+				"jwt"
+			],
+			[
+				"ti",
+				"twitter"
+			],
+			[
+				"i",
+				"identity"
+			],
+			[
+				"mo",
+				"model"
+			],
+			[
+				"error",
+				"errorCode"
+			],
+			[
+				"loa",
+				"load"
+			],
+			[
+				"load",
+				"loadMenu"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"da",
+				"dataSource"
+			],
+			[
+				"data",
+				"dataSource"
+			],
+			[
+				"JS",
+				"parseJSON"
+			],
+			[
+				"proce",
+				"process"
+			],
+			[
+				"js",
+				"jsonp"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "ui/index.html",
+			"settings":
+			{
+				"buffer_size": 2798,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ui/client/partials/home.html",
+			"settings":
+			{
+				"buffer_size": 613,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ui/client/scripts/controller/controllers.js",
+			"settings":
+			{
+				"buffer_size": 478,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ui/client/partials/contact.html",
+			"settings":
+			{
+				"buffer_size": 1874,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ui/client/css/sst.css",
+			"settings":
+			{
+				"buffer_size": 2932,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "ui/client/scripts/package.json",
+			"settings":
+			{
+				"buffer_size": 127,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/css",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/partials",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/scripts",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/scripts/controller"
+	],
+	"file_history":
+	[
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/partials/contact.html",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/partials/about.html",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/scripts/package.json",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/scripts/controller/controllers.js",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/scripts/app.js",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/index.html",
+		"/Users/sergiocarrero/Node/social-solutions-technologies/socialstech/src/main/ui/client/css/sst.css",
+		"/Users/sergiocarrero/Projects/Freelance/Triton/triton/client/index.html",
+		"/Users/sergiocarrero/Projects/Freelance/Triton/triton/client/js/app.js",
+		"/Users/sergiocarrero/Projects/Freelance/Triton/triton/client/js/controllers-sales.js",
+		"/Users/sergiocarrero/Projects/Freelance/Triton/triton/client/js/controllers-purchases.js",
+		"/Users/sergiocarrero/Projects/Freelance/Triton/triton/client/js/controllers-companies.js",
+		"/Users/sergiocarrero/Projects/Freelance/Triton/triton/client/js/controllers.js",
+		"/Users/sergiocarrero/Node/server.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/domain/securityDomain.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/app.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/shared/authorization.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/routes/security.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/model/security.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/model/business.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/config/auth.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/routes/category.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/bin/www",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/config/business.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/views/layout.pug",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/views/index.pug",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/controller/category.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/shared/response_extension.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/routes/index.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/data_provider/mongo_provider.js",
+		"/Users/sergiocarrero/Node/todoManager/todoManager/server/model/category.js",
+		"/Users/sergiocarrero/Node/todoManager/app.js",
+		"/Users/sergiocarrero/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/sergiocarrero/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/sergiocarrero/Library/Application Support/Sublime Text 3/Packages/Default/Distraction Free.sublime-settings",
+		"/Users/sergiocarrero/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/Users/sergiocarrero/Node/todoManager/routes/index.js",
+		"/Users/sergiocarrero/Node/todoManager/views/layout.pug",
+		"/Users/sergiocarrero/Node/todoManager/views/index.pug",
+		"/Users/sergiocarrero/Node/todoManager/views/error.pug",
+		"/Users/sergiocarrero/Node/contentManager/routes/users.js",
+		"/Users/sergiocarrero/Node/contentManager/routes/index.js",
+		"/Users/sergiocarrero/Node/contentManager/app.js",
+		"/Users/sergiocarrero/Node/contentManager/package.json",
+		"/Users/sergiocarrero/Node/app/index.js",
+		"/Users/sergiocarrero/Node/node_modules/fab/demo.js",
+		"/Users/sergiocarrero/Downloads/53ec8e28f81b40be38894ba119f8fd0b.torrent",
+		"/Users/sergiocarrero/Downloads/7c651f68052a5100c4c319a184449b3b.torrent",
+		"/Users/sergiocarrero/Coursera/coursera/code/iOS Design Guidelines/ToDoManager/ToDoManager/Assets.xcassets/importance.imageset/Contents.json",
+		"/Users/sergiocarrero/Desktop/PowWow/src/server/data/menu.json",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/scripts/Core.js",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/Index.html",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/q2-file-input.json",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/q3-file-input.json",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/q4-centered-square-container.json",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/q1-file-input.json",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/q4-centered-square-container.html",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/q1-file-input.html",
+		"/Users/sergiocarrero/Desktop/PowWow/src/PowWow.sublime-project",
+		"/Users/sergiocarrero/Desktop/StructuringJavaScript/StructuringJavaScript/Scripts/PrototypePattern.js",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/scripts/:: Core.js",
+		"/Users/sergiocarrero/Desktop/PowWow/src/client/partials/Index.html",
+		"/Users/sergiocarrero/Documents/dev.me/ios/GrammyPlus/Podfile",
+		"/Volumes/DATA/SCMS-SRA/SCMS-SRA/HomeViewController.m"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"(col-md)(-\\d+)",
+			"col-md",
+			"'",
+			"model",
+			"jwt",
+			"request",
+			"auth",
+			"status",
+			"findCredential",
+			"authorization.identity",
+			"validateToken",
+			"findUserByMail",
+			"mongoose",
+			"find",
+			"mongoose",
+			"auth",
+			"jwt",
+			"registerUserForCredential",
+			"getIdentityInformation",
+			"validateToken",
+			"getToken",
+			"authetication",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"col-lg$2 col-md$2 col-sm$2",
+			"col-lg-$2 col-md-$2 col-sm-$2",
+			"\"",
+			"",
+			"\"",
+			"\\\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "ui/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2798,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								68
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 279.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "ui/client/partials/home.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								608,
+								608
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "ui/client/scripts/controller/controllers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 478,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								320,
+								320
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "ui/client/partials/contact.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1527,
+								1527
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "ui/client/css/sst.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								758,
+								758
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 437.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "ui/client/scripts/package.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 127,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ui.socialstechnologies.com.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 324.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
