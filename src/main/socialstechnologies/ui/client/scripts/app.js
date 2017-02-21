@@ -1,6 +1,7 @@
 'use strict';
 var socialSTechnologiesApp = angular.module('socialSTechnologiesApp', [
  'ngRoute',
+ 'ngMessages',
  'sstComponent', 
  'sstController'
 ])
