@@ -20,6 +20,6 @@ module.exports = {
 	localAuth:{
 		"secret":"your-app-secret",
 		"issuer":"APP_NAME",
-		"expiration":1440
+		"expiration":'1h'
 	}
 }

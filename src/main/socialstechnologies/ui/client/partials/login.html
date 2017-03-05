@@ -1,0 +1,55 @@
+<div ng-controller="loginController as $ctrl" class="container-fluid modal-target">
+    <!--<div class="fullscreen-bg">
+    	<video loop muted autoplay 
+	    	ng-attr-poster="{{$ctrl.content.video.poster}}" 
+	    	class="fullscreen-bg__video">
+	        <source ng-if="$ctrl.content.video.webm" src="{{$ctrl.content.video.webm}}" type="video/webm">
+	        <source ng-if="$ctrl.content.video.mp4" src="{{$ctrl.content.video.mp4}}" type="video/mp4">
+	        <source ng-if="$ctrl.content.video.ogg" src="{{$ctrl.content.video.ogg}}" type="video/ogg">
+	        <source ng-if="$ctrl.content.video.mov" src="{{$ctrl.content.video.mov}}">
+	    </video>
+    </div>-->
+    <form name="loginForm" novalidate class="login form-horizontal">
+	    <fieldset>
+			<div class="form-group row">
+				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Username:</label>
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<input type="text" 
+						name="username" 
+						ng-model="$ctrl.login.username" 
+						placeholder="Username" 
+						required></input>	
+					<div class="help-block" ng-messages="loginForm.username.$error" ng-if="loginForm.username.$touched">
+					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Password:</label>
+				<div  class="col-lg-8 col-md-8 col-sm-8 col-xs-12" >
+					<input type="password" 
+						name="password" 
+						ng-model="$ctrl.login.password" 
+						placeholder="Password" 
+						required></input>	
+					<div class="help-block" 
+						ng-messages="loginForm.password.$error" 
+						ng-if="loginForm.password.$touched">
+					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+	            <a href="#!/signup" class="btn">Sign up</a>
+	        </div>
+	        <div class="form-group row">
+	            
+	            <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="loginForm.$invalid" ng-click="$ctrl.submit(loginForm.$valid)">Login</button>
+	            <a href="#!/" class="btn btn-default btn-lg btn-block">Cancel</a>
+	        </div>
+
+			<div class="modal-parent">
+			</div>
+		</fieldset>
+	</form>
+</div>

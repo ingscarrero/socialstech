@@ -1,5 +1,4 @@
 
-require('./response_extension');
 var securityDomain = require('../domain/securityDomain');
 var express = require('express');
 
@@ -54,9 +53,15 @@ function ensureAuthorized(req, res, next) {
         req.token = authorization.key;
         next();
     } else {
-        res.error(404, 
+    	console.log('API Error - Not Authorized')
+    	securityDomain.handleError({
+    		code: 400, 
+    		message: 'Inavlid Token', 
+    		error: "Bearer Token invalid or missing."
+    	}, res);
+        /*res.error(404, 
         	"Invalid token.", 
-        	"Bearer Token invalid or missing.");
+        	"Bearer Token invalid or missing.");*/
     }
 }
 
@@ -80,13 +85,26 @@ function ensureIsAuthenticated(req, res, next){
 				});
 		})
 		.catch(err=>{
+			console.log('API Error - Not Authenticated')
 			securityDomain.handleError(err, res);
 		});
 };
+
+function ensureSecure(req, res, next){
+  if(req.secure){
+    return next();
+  };
+  // handle port numbers if you need non defaults
+  var secPort = ':' + req.app.get('secure_port')
+  console.log('https://' + req.hostname + secPort + req.originalUrl)
+  res.writeHead(301, { "Location":  'https://' + req.hostname + secPort + req.originalUrl });
+  res.end();
+}
 
 
 module.exports = {
 	credentials: extractRequestCredentials,
 	isAuthorized: ensureAuthorized,
-	isAuthenticated: ensureIsAuthenticated
+	isAuthenticated: ensureIsAuthenticated,
+	ensureSecure: ensureSecure
 }

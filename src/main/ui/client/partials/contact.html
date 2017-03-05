@@ -1,0 +1,27 @@
+<div class="container-fluid">
+	<form name="contact-form">
+		<div class="control-group row">
+			<label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Name:</label>
+			<input class="col-lg-9 col-md-9 col-sm-9 col-xs-12"  type="text" name="name" ng-model="interaction.name" placeholder="Your name"></input>	
+			<span ng-show="contact-form.name.$error.required && !contact-form.name.$pristine" class="help-inline">Required {{myForm.name.$pristine}}</span>
+		</div>
+		<div class="control-group row">
+			<label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Email:</label>
+			<input class="col-lg-9 col-md-9 col-sm-9 col-xs-12" type="text" name="email" ng-model="interaction.email" placeholder="Your email"></input>
+			<span ng-show="contact-form.name.$error.required && !contact-form.name.$pristine" class="help-inline">Required {{myForm.name.$pristine}}</span>
+		</div>
+		<div class="control-group row">
+			<label class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Subject:</label>
+			<input class="col-lg-9 col-md-9 col-sm-9 col-xs-12" type="text" name="subject" ng-model="interaction.subject" placeholder="Subject of interest"></input>
+			<span ng-show="contact-form.name.$error.required && !contact-form.name.$pristine" class="help-inline">Required {{myForm.name.$pristine}}</span>
+		</div>
+		<div class="control-group row">
+			<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Details:</label>
+			<textarea class="col-lg-12 col-md-12 col-sm-12 col-xs-12" name="description" ng-model="interaction.details" placeholder="Your detailed explanation"></textarea>
+			<span ng-show="contact-form.name.$error.required && !contact-form.name.$pristine" class="help-inline">Required {{myForm.name.$pristine}}</span>
+		</div>
+		<br>
+  		<a href="#!/" class="btn">Cancel</a>
+  		<button ng-disabled="contact-form.$invalid" class="btn btn-primary" ng-click="save()">Save</button>
+	</form>
+<div>

@@ -1,0 +1,199 @@
+<div ng-controller="homeEditController as $ctrl" 
+	class="container-fluid modal-target" 
+	ng-cloak 
+	parallax>
+	<form name="contentForm" 
+		class="home form-horizontal" 
+		permission="['user']" 
+		novalidate>
+		
+		<aside class="actions">
+			<div ng-click="$ctrl.cancel()">
+				<img src="/client/resources/icons/cancel-xxl.png" class="fill">
+			</div>
+			<div ng-click="$ctrl.addItem()">
+				<img src="/client/resources/icons/plus-5-512.png" class="fill">
+			</div>	
+			<div ng-click="$ctrl.save()">
+				<img src="/client/resources/icons/upload-2-512.png" class="fill">
+			</div>
+		</aside>
+		<section ng-repeat="item in $ctrl.content.items track by $index" 
+			ng-init="$itemIndex = $index" 
+			class="item" 
+			id="item_{{$itemIndex}}">
+			<aside class="form-group row"> 
+				<div class="inner-actions">
+					<div ng-click="$ctrl.removeItem($itemIndex)">
+						<img src="/client/resources/icons/cancel-xxl.png" 
+							class="fill">
+					</div>
+					<div ng-click="$ctrl.addDetail($itemIndex)">
+						<img src="/client/resources/icons/plus-5-512.png" 
+							class="fill">
+					</div>	
+				</div>
+			</aside>
+			<header class="home-edit-header">
+					<h2>Item {{$itemIndex + 1}}</h2>
+					<hr>
+			</header>
+			<section>
+				<div class="form-group row">
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Title:</label>
+					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+						<input 
+							ng-model="$ctrl.content.items[$itemIndex]['title']"
+							name="items_{{$itemIndex}}_title"
+							required>
+						<div class="help-block" 
+							ng-messages="contentForm[ 'items_' + $itemIndex + '_title'].$error" 
+							ng-if="contentForm[ 'items_' + $itemIndex + '_title'].$touched">
+						    <div 
+						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Image URL:</label>
+					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+						<input type="url"
+								ng-model="$ctrl.content.items[$itemIndex]['imageUrl']"
+								name="items_{{$itemIndex}}_imageUrl"
+								class="font-small" 
+								required>
+						<div class="help-block" 
+							ng-messages="contentForm[ 'items_' + $itemIndex + '_imageUrl'].$error" 
+							ng-if="contentForm[ 'items_' + $itemIndex + '_imageUrl'].$touched">
+						    <div 
+						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Minimun Height:</label>
+					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+						<input type="text" 
+							ng-model="$ctrl.content.items[$itemIndex]['minHeight']" 
+							name="items_{{$itemIndex}}_minHeight"
+							required>
+						<div class="help-block" 
+							ng-messages="contentForm[ 'items_' + $itemIndex + '_minHeight'].$error" 
+							ng-if="contentForm[ 'items_' + $itemIndex + '_minHeight'].$touched">
+						    <div 
+						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Subtitle:</label>
+					<div  class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+						<input type="text"
+							ng-model="$ctrl.content.items[$itemIndex]['subtitle']"
+							name="items_{{$itemIndex}}_subtitle"
+							required>
+						<div class="help-block" 
+							ng-messages="contentForm[ 'items_' + $itemIndex + '_subtitle'].$error" 
+							ng-if="contentForm[ 'items_' + $itemIndex + '_subtitle'].$touched">
+						    <div 
+						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Preview:</label>
+				</div>
+				<details class="form-group row">
+					<summary>The final display could be quite different depending on device's resolution and browser.</summary>
+					<div class="parallax" style="background-image:url('{{item.imageUrl}}');min-height:{{item.minHeight}}">
+						<h1 ng-bind="item.title"></h1>
+					</div>
+					<header class="home-header">
+						<h2 ng-bind="item.subtitle"></h2>
+					</header>
+				</details>
+
+
+				<section ng-repeat="detail in item.details track by $index" 
+					ng-init="$detailIndex = $index" 
+					class="detail" 
+					id="item_{{$itemIndex}}_detail_{{$detailIndex}}">
+
+					<aside class="inner-actions">
+						<div ng-click="$ctrl.removeDetail($itemIndex, $detailIndex)">
+							<img src="/client/resources/icons/cancel-xxl.png" 
+								class="fill">
+						</div>
+					</aside>
+					<header class="home-edit-detail">
+						<h2>Detail {{$detailIndex + 1}}</h2>
+						<hr>
+					</header>
+
+					<section>
+						<div class="form-group row">
+							<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Image URL:</label>
+							<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+								<input type="url"
+									class="font-small"
+									name="items_{{$itemIndex}}_details_{{$detailIndex}}_imageUrl" 
+									ng-model="$ctrl.content.items[$itemIndex]['details'][$detailIndex]['imageUrl']"
+									required>
+								<div class="help-block" 
+									ng-messages="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
+									'_imageUrl'].$error" 
+									ng-if="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
+									'_imageUrl'].$touched">
+								    <div 
+								    	ng-messages-include="/client/partials/validationMessage.html"></div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Text:
+							</label>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<textarea 
+									ng-model="$ctrl.content.items[$itemIndex]['details'][$detailIndex]['text']" 
+									ng-change="$ctrl.renderHtml($itemIndex, $detailIndex)"
+									class="font-small" 
+									name="items_{{$itemIndex}}_details_{{$detailIndex}}_text"
+									required>	
+								</textarea>
+								<div class="help-block" 
+									ng-messages="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
+									'_text'].$error" 
+									ng-if="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
+									'_text'].$touched">
+								    <div 
+								    	ng-messages-include="/client/partials/validationMessage.html"></div>
+								</div>
+							</div>							
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Preview:</label>
+						</div>
+						<details class="form-group row">
+							<summary>The final display could be quite different depending on device's resolution and browser.</summary>
+							<div class="home-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="row container-fluid accessory-collection">
+									<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 accessory-container" >
+										<div ng-if="detail.imageUrl" 
+											class="accessory" 
+											style="background-image: url('{{detail.imageUrl}}');">
+										</div>
+									</div> 
+									<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 accessory-content" ng-bind-html="detail.renderedHtml"></div>
+								</div>
+							</div>
+						</details>
+					</section>
+						
+					
+				</section>
+			</section>
+		</section>
+		<div class="modal-parent">
+    	</div>
+	</form>
+</div>

@@ -2,60 +2,70 @@
 <html ng-app="socialSTechnologiesApp">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
   <script src="/client/scripts/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/client/scripts/bower_components/CryptoJS_v3.1.2/rollups/hmac-sha256.js"></script>
+  <script src="/client/scripts/bower_components/CryptoJS_v3.1.2/components/enc-base64-min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-messages.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-messages.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
-  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  
+  <script src="/client/scripts/device.min.js"></script>
   <script src="/client/scripts/app.js"></script>
+  <script src="/client/scripts/sst.js"></script>
+  <script src="/client/scripts/services/services.js"></script>
   <script src="/client/scripts/controller/controllers.js"></script>
   <script src="/client/scripts/component/components.js"></script>
+
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
   <link href="client/css/sst.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway' rel='stylesheet'  type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet'  type='text/css'>
   <title>Technologic solutions with a social impact.</title>
 </head>
 <body>
   <div class="site-wrapper">
-
     <div class="site-wrapper-inner">
-
       <div class="cover-container">
-
-        <div class="masthead clearfix">
-          <div class="inner" ng-controller="mainController as $ctrl">
-            <h3 class="masthead-brand">Social Solutions Technologies</h3>
-            <nav>
-              <ul class="nav masthead-nav">
-                <li ng-repeat="item in $ctrl.menu.items" ng-class="item.class">
-                  <a ng-href="{{item.action}}" >{{item.title}}</a>
-                </li>
-              </ul>
-            </nav>
+        <header class="masthead clearfix">
+          <div id="pageHeader" class="header" ng-controller="headerController as $ctrl">
+            <div class="header-bg"></div>
+            <div class="header-content">
+              <h3 class="masthead-brand">Social Solutions Technologies</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li ng-repeat="item in $ctrl.header.menu.items" ng-class="$ctrl.header.menu.activeItem.action == item.action ? 'active' : ''">
+                    <a ng-href="{{item.action}}" ng-bind="item.title"></a>
+                  </li>
+                </ul></nav>  
+            </div>
+            <div ng-if="$ctrl.header.user" class="masthead-user">
+                <div>
+                  <span>
+                    Welcome<br><b>{{$ctrl.header.user.name}}!</b>
+                  </span>
+                </div>
+              </div>
           </div>
-        </div>
-
-        <div class="inner cover">
-        <div ng-view>
-        </div>
-
-        <div class="mastfoot">
-          <div class="inner">
-            <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-          </div>
-        </div>
-        <script type="text/javascript">
-          $(document).ready(function(){
-            // Menu item click
-            $('.nav.masthead-nav>li>a').click(function(e){
-              $('.nav.masthead-nav>li').removeClass()
-              $(this).parent().addClass('active')
-            })
-          })
-        </script>
-      </div>
+        </header>
+        <article class="inner cover">
+          <section ng-view>
+          </section>
+        </article>
+        <footer class="mastfoot">
+          <article class="inner">
+            <p>
+              © Social Solutions Technologies<br>
+              California, USA<br>
+              2017
+            </p>
+          </article>
+        </footer>
     </div>
   </div>    
 </body>

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-console.log('Will connect to security model.');
+console.log('Will connect to security model at: ' + process.env.MONGO_DB_SECURITY);
 var connection = mongoose.createConnection(process.env.MONGO_DB_SECURITY);
 var Schema = mongoose.Schema;
 

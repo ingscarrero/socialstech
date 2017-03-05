@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var interaction = require('./routes/interaction');
+var sstContent = require('./routes/sst-content');
+var sstAccessControl= require('./routes/sst-access-control');
 
 var app = express();
 
@@ -19,7 +21,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'ui')));
 
 app.use('/', index);
-app.use('/api/interaction', interaction);
+app.use('/api/sst/interaction', interaction);
+app.use('/api/sst/content', sstContent);
+app.use('/api/sst/security', sstAccessControl);
 
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -41,9 +45,9 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  console.log(err);
+  res.status(err.status || 500).jsonp({code:err.code, message: 'Ups! something went wrong. We really sorry. Please try again later.', error:err.message});
+  //res.render('error');
 });
 
 module.exports = app;

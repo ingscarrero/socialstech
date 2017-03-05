@@ -1,2 +1,32 @@
-<div ng-controller="homeController as $ctrl">
+<div ng-controller="homeController as $ctrl" parallax ng-cloak>
+	<aside class="actions-home" permission="['user']">
+		<div ng-click="$ctrl.edit()">
+			<img src="/client/resources/icons/edit-2-xxl.png" class="fill">
+		</div>
+	</aside>
+	<section ng-repeat="item in $ctrl.content.items">
+		<div class="parallax" style="background-image:url('{{item.imageUrl}}');min-height:{{item.minHeight}}">
+			<h1 ng-bind="item.title"></h1>
+		</div>
+		<div>
+			<header class="home-header">
+				<h2 ng-bind="item.subtitle"></h2>
+			</header>
+			<article class="home-content">
+				<section ng-repeat="detail in item.details" class="row container-fluid accessory-collection" >
+					
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 accessory-container" >
+						<div 
+							ng-if="detail.imageUrl" 
+							class="accessory" 
+							style="background-image: url('{{detail.imageUrl}}');">
+						</div>
+					</div>
+					<div ng-bind-html="detail.text" 
+						class="col-lg-8 col-md-8 col-sm-12 col-xs-12 accessory-content">
+					</div>
+				</section>
+			</article>
+		</div>
+	</section>
 <div>

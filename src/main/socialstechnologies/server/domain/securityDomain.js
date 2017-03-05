@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var model = require('../model/security');
 var jwt = require("jsonwebtoken");
 var request = require("request");
+var crypto = require('crypto');
 
 // Registration & Login
 
@@ -18,11 +19,16 @@ function signIn(login, password){
 						message: 'Invalid credentials. Login is already registered. Please try again with a different one.',
 						error: 'Repeated login. Can\'t process Signin request.'
 					});
+					return;
 				}
 			}).catch(err=>{
 				createIdentity('local', login, password).then(function(identity){
 						resolve(identity);
-					}).catch(err=>reject(err));
+						return;
+					}).catch(err=>{
+						reject(err);
+						return;
+					});
 			});
 		} catch (ex){
 			var err = {
@@ -31,6 +37,7 @@ function signIn(login, password){
 				error: ex
 			}
 			reject(err);
+			return;
 		}
 	});
 }
@@ -53,11 +60,16 @@ function authenticateWithProvider(provider, token){
 									}
 								identity.save(function(err, updatedIdentity){
 									resolve(updatedIdentity)
+									return;
 								})
 							} else {
 								createIdentity(provider, profile).then(function(identity){
 									resolve(identity);
-								}).catch(err=>reject(err));
+									return;
+								}).catch(err=>{
+									reject(err);
+									return;
+								});
 							}
 						} else {
 							var err = {
@@ -66,6 +78,7 @@ function authenticateWithProvider(provider, token){
 								error: ex
 							}
 							reject(err);
+							return;
 						}
 					})
 				} else {
@@ -77,12 +90,17 @@ function authenticateWithProvider(provider, token){
 							if (identity) {
 								validateToken(identity.token)
 									.then(function(profile){
-										resolve(identity);		
+										resolve(identity);
+										return;		
 									}).catch(err=>{
 										updateIdentityLocalToken(identity)
 											.then(function(updatedIdentity){
 												resolve(updatedIdentity);
-											}).catch(err=>reject(err));
+												return;
+											}).catch(err=>{
+												reject(err);
+												return;
+											});
 									})
 								
 							} else {
@@ -91,25 +109,45 @@ function authenticateWithProvider(provider, token){
 										if(user){
 											createIdentity(provider, profile, user.internalUserId).then(function(identity){
 												resolve(identity);
-											}).catch(err=>reject(err));		
+												return;
+											}).catch(err=>{
+												reject(err);
+												return;
+
+											});		
 										} else {
 											createIdentity(provider, profile, null).then(function(identity){
 												resolve(identity);
-											}).catch(err=>reject(err));			
+												return;
+											}).catch(err=>{
+												reject(err);
+												return;
+											});			
 										}
-									}).catch(err=>reject(err));	
+									}).catch(err=>{
+										reject(err);
+										return;
+									});	
 								} else {
 									createIdentity(provider, profile, null).then(function(identity){
 										resolve(identity);
-									}).catch(err=>reject(err));	
+										return;
+									}).catch(err=>{
+										reject(err);
+										return;
+									});	
 								}
 							}
 						} else {
 							reject(err);
+							return;
 						}
 					});
 				}
-			}).catch(err=>reject(err));
+			}).catch(err=>{
+				reject(err);
+				return;
+			});
 		} catch (ex) {
 			var err = {
 				code: 500,
@@ -117,6 +155,7 @@ function authenticateWithProvider(provider, token){
 				error: ex
 			};
 			reject(err);
+			return;
 		}
 	});
 }
@@ -136,6 +175,7 @@ function validateFacebookToken(token){
 				if (!data.error) {
 					var profile = data;
 					resolve(profile);
+					return;
 				} else {
 					var err = {
 						code: 409,
@@ -143,9 +183,11 @@ function validateFacebookToken(token){
 						error: data.error
 					};
 					reject(err);
+					return;
 				}
 			} else {
-				reject(error)
+				reject(error);
+				return;
 			}
 		});
 	});
@@ -159,6 +201,7 @@ function validateTwitterToken(token){
 			error: 'Selected provider is not currently supported.'
 		}
 		reject(err);
+		return;
 	});
 }
 
@@ -170,6 +213,7 @@ function validateGoogleToken(token){
 			error: 'Selected provider is not currently supported.'
 		}
 		reject(err);
+		return;
 	});
 }
 
@@ -180,6 +224,7 @@ function validateToken(provider, token){
 			try{
 				var profile = jwt.verify(token, auth.localAuth.secret).data;
 				resolve(profile);
+				return;
 			} catch (ex) {
 				var err = {
 					code: 409,
@@ -187,23 +232,36 @@ function validateToken(provider, token){
 					error: ex
 				};
 				reject(err);
+				return;
 			}
 		} else {
 			switch(provider){
 				case 'facebook':
 					validateFacebookToken(token).then(function(profile){
 						resolve(profile);
-					}).catch(err=>reject(err));
+						return;
+					}).catch(err=>{
+						reject(err);
+						return;
+					});
 					break;
 				case 'google':
 					validateGoogleToken(token).then(function(profile){
 						resolve(profile);
-					}).catch(err=>reject(err));
+						return;
+					}).catch(err=>{
+						reject(err);
+						return;
+					});
 					break;
 				case 'twitter':
 					validateTwitterToken(token).then(function(profile){
 						resolve(profile);
-					}).catch(err=>reject(err));
+						return;
+					}).catch(err=>{
+						reject(err);
+						return;
+					});
 					break;
 				default:
 					var err = {
@@ -214,6 +272,7 @@ function validateToken(provider, token){
 					reject(err);
 					break;
 			}
+			return;
 		}
 	});
 }
@@ -265,14 +324,17 @@ function createIdentity(){
 						
 					newIdentity.save(function(err, registeredIdentity){
 						if (!err) {
-
-							console.log(registeredIdentity);
-
 							createCredential(login, password, registeredIdentity.id).then(function(credential){
 								resolve(registeredIdentity);
-							}).catch(err=>reject(err));
+								return;
+							}).catch(err=>{
+								reject(err);
+								return;
+							});
 						} else {
+							console.log(err);
 							reject(err);
+							return;
 						}	
 					});
 
@@ -297,13 +359,21 @@ function createIdentity(){
 						newIdentity.save(function(err, registeredIdentity){
 							if (!err) {
 								resolve(registeredIdentity);
+								return;
 							} else {
 								reject(err);
+								return;
 							}	
 						});
-					}).catch(err=>reject(err));
+					}).catch(err=>{
+						reject(err);
+						return;
+					});
 					
-				}).catch(err=>reject(err));
+				}).catch(err=>{
+					reject(err);
+					return;
+				});
 			} else {
 				model.user.findOne({
 					_id: userId
@@ -328,6 +398,7 @@ function createIdentity(){
 								} else {
 									reject(err);
 								}	
+								return;
 							});
 						} else {
 							reject({
@@ -335,6 +406,7 @@ function createIdentity(){
 								message: 'Invalid user.',
 								error: 'Provided user identifier is not valid. Can\'t process Signin request.'
 							});
+							return;
 						}
 					} else {
 						var err = {
@@ -342,8 +414,8 @@ function createIdentity(){
 							message: 'It wasn\'t possible to authenticate token. There were errors in the process. Please validate the information and try again.',
 							error: ex
 						}
-						handleError(err, res);
 						reject(err);
+						return;
 					}
 				});
 			}
@@ -360,13 +432,14 @@ function updateIdentityLocalToken(identity){
 				_id: "WEB_APP",
 				on: Date()
 			}
-			console.log(identity);
 			identity.save(function(err, updatedIdentity){
 				if(!err){
 					resolve(updatedIdentity);
 				} else {
+					console.log(err);
 					reject(err);
 				}
+				return;
 			});
 		} catch (ex){
 			var err = {
@@ -375,6 +448,7 @@ function updateIdentityLocalToken(identity){
 				error: ex
 			}
 			reject(err);
+			return;
 		}
 	});
 }
@@ -388,6 +462,7 @@ function findIdentityById(identityIdentifier){
 			} else {
 				reject(err);
 			}
+			return;
 		});
 	});
 }
@@ -410,11 +485,14 @@ function createContact(full_name, email, phones){
 			} else {
 				reject(err);
 			}
+			return;
 		});
 	});
 }
 
-function updateContact(full_name, email, phones, country
+function updateContact(full_name, email, phones, country){
+	
+}
 
 function findContactById(contactIdentifier){
 	return new Promise(function(resolve, reject){
@@ -426,6 +504,7 @@ function findContactById(contactIdentifier){
 			} else {
 				reject(err);
 			}
+			return;
 		});
 		
 	});
@@ -450,6 +529,7 @@ function createUser(name, contactId){
 			} else {
 				reject(err);
 			}
+			return;
 		});
 	});
 }
@@ -462,6 +542,7 @@ function findUserById(userIdentifier){
 			} else {
 				reject(err);
 			}
+			return;
 		});
 	});	
 }
@@ -477,12 +558,15 @@ function findUserByEmail(email){
 						} else {
 							reject(err);
 						}
+						return;
 					});	
 				} else {
-					resolve(null);
+					resolve(undefined);
+					return;
 				}
 			} else {
 				reject(err);
+				return;
 			}
 		});	
 	});
@@ -507,6 +591,7 @@ function createCredential(login, password, identityId){
 			} else {
 				reject(err);
 			}
+			return;
 		});
 	});
 }
@@ -528,6 +613,7 @@ function findCredential(login, password){
 						}
 						reject(err);
 					}
+					return;
 				} else {
 					var err = {
 						code: 404,
@@ -535,9 +621,11 @@ function findCredential(login, password){
 						error: 'No credential was found for the provided login.'
 					}
 					reject(err);
+					return;
 				}
 			} else {
 				reject(err);
+				return;
 			}
 		});
 		
