@@ -32,7 +32,8 @@ sstDirective.directive('parallax', function($timeout){
   return{
     link: function(scope, element, attrs){
       $timeout(function(){
-        sst().parallax(jQuery, window, document)
+        sst().parallax(jQuery, window, document);
+        sst().animateElementOnShow(jQuery, window, document);
       }, 100);
     }
   }

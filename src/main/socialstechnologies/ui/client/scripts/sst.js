@@ -4,7 +4,82 @@ var sst = function(){
 	var sstDefinition = {
 		parallax: parallax,
 		stickyHeader: stickyHeader,
-		relocateScroll: relocateScrollToElementWithId
+		relocateScroll: relocateScrollToElementWithId,
+		animateElementOnShow: animateElementOnShow
+	}
+
+	function animateElementOnShow($, window, document, undefined){
+
+		var animateShownClass = 'animate-scrolling';
+		var shownDefaultClass = 'animate-scrolling-shown';
+		var animateShownTextClass = 'animate-scrolling-text';
+		var animateShownLeftClass = 'animate-scrolling-left';
+		var shownClass = 'animate-scrolling-shown-middle';
+		var $window = $(window)
+		var elSelector = '.accessory';
+		var elSelectorContent = '.accessory-content';
+
+
+		var $elements = $(elSelector);
+		$elements.each(function(){
+			var $target = $(this);
+
+			$target.addClass(animateShownClass);
+			$target.addClass(animateShownLeftClass);
+
+			$window.bind('scroll', function() {
+				pollElementVisibility($window, $target, true, (result)=>{
+					if (result === true){
+						if(!$target.hasClass(shownClass)) {
+							$target.addClass(shownClass);
+						}
+					} else {
+						if($target.hasClass(shownClass)) {
+							$target.removeClass(shownClass);
+						}
+					}
+				});
+			});
+		});
+
+
+		var $contents = $(elSelectorContent);
+		$contents.each(function(){
+			var $target = $(this);
+
+			$target.addClass(animateShownClass);
+			$target.addClass(animateShownTextClass);
+
+			$window.bind('scroll', function() {
+				pollElementVisibility($window, $target, false, (result)=>{
+					if (result === true){
+						if(!$target.hasClass(shownDefaultClass)) {
+							$target.addClass(shownDefaultClass);
+						}
+					} else {
+						if($target.hasClass(shownDefaultClass)) {
+							$target.removeClass(shownDefaultClass);
+						}
+					}
+				});
+			});
+		});
+
+	}
+
+	function pollElementVisibility($window, $target, fullyInView, callback){
+		var pageTop = $window.scrollTop();
+		var pageBottom = pageTop + $window.height();
+		var elementTop = $target.offset().top;
+		var elementBottom = elementTop + $target.height();
+		var didShown = false;
+
+		if (fullyInView === true) {
+			 didShown = (pageBottom - elementTop) > 0 && (pageBottom - elementBottom) > 0;
+		} else {
+			didShown = (pageBottom - elementTop) >= 0;
+		}
+		callback(didShown);
 	}
 
 	function relocateScrollToElementWithId(id){
@@ -32,7 +107,7 @@ var sst = function(){
 	          	$window = $(window);
 	         	$elements.each(function(){
 	              var $scroll = $(this);
-	              $(window).scroll(function() {
+	              $window.scroll(function() {
 	                  var yPos = -(($window.scrollTop() - $scroll.offset().top) / speed);
 	                  var coords = '50% '+ yPos + 'px';
 	                  $scroll.css({ backgroundPosition: coords });
@@ -101,5 +176,8 @@ var sst = function(){
 };
 
 //sst().setActiveMenu(jQuery, document);
-sst().stickyHeader(jQuery, window, document);
-sst().parallax(jQuery, window, document);
+$(document).ready(function(){
+	sst().stickyHeader(jQuery, window, document);
+	sst().parallax(jQuery, window, document);
+	sst().animateElementOnShow(jQuery, window, document);	
+})

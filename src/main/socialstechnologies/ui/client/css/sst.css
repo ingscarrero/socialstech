@@ -157,9 +157,8 @@ summary:hover{
   position: fixed;
   top: 0;
   right: 0;
-  border-top: 120px solid cyan;
-  border-left: 150px solid transparent;
-  margin-top: -10px;
+  border-top: 120px solid #d44;
+  border-left: 170px solid transparent;
 
   -webkit-transition-duration: .5s;
   transition-duration: .5s;
@@ -170,27 +169,26 @@ summary:hover{
 
   -webkit-transition-property: border-top, border-left;
   transition-property: border-top, border-left;
+
 }
 
 .masthead-user:hover{
   position: fixed;
   top: 0;
   right: 0;
-  border-top: 140px solid cyan;
-  border-left: 170px solid transparent;
-  margin-top: -10px;
-
-
+  border-top: 140px solid #d44;
+  border-left: 200px solid transparent;
 }
 
 .masthead-user div{
   position: relative;
-  background-color: #000;
-  margin-top: -70px;
-  margin-left: -100px;
-  -ms-transform: rotate(38deg); /* IE 9 */
-  -webkit-transform: rotate(38deg); /* Chrome, Safari, Opera */
-  transform: rotate(38deg);
+  margin-top: -80px;
+  margin-left: -120px;
+
+
+  -ms-transform: rotate(35deg); /* IE 9 */
+  -webkit-transform: rotate(35deg); /* Chrome, Safari, Opera */
+  transform: rotate(35deg);
 
    -webkit-transition-duration: .5s;
   transition-duration: .5s;
@@ -209,12 +207,12 @@ summary:hover{
   -ms-transform: translate(-50%, -50%);
   transform    : translate(-50%, -50%);
   position: absolute;
-  color: #aaa;
+  color: #ddd;
   text-align: center;
 }
 
 .masthead-user div span b{
-  color: #666;
+  color: #2cb;
   text-transform: uppercase;
 }
 
@@ -296,7 +294,37 @@ form.home{
   font-size: 16px;
 }
 
+.animate-scrolling{
+  opacity: 0 !important;
 
+
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+
+  -webkit-transition-property: all;
+  transition-property: all;
+}
+
+.animate-scrolling-left{
+  left: 0 !important;
+}
+
+.animate-scrolling-text{
+  -webkit-transition-duration: 1.5s !important;
+  transition-duration: 1.5s !important;
+}
+
+.animate-scrolling-shown{
+  opacity: 1!important;
+}
+
+.animate-scrolling-shown-middle{
+  opacity: 1!important;
+  left: 50%!important;
+}
 
 .header{
   width: 100%;
@@ -380,7 +408,6 @@ form.home{
   left:50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  opacity: 1;
 
   background-size: cover;
   background-position: center;
@@ -388,6 +415,10 @@ form.home{
   border: #1f9 10px solid;
 }
 
+
+.accessory.about{
+  border: #3ce 10px solid;
+}
 
 .accessory-collection{
   min-height: 250px;
@@ -736,8 +767,8 @@ form.home{
   }
   .masthead-nav {
     float: right;
-  }
-
+    margin-right: 100px;
+ }
   .masthead-nav > li > a {
     font-size: 25px;
   }
@@ -763,7 +794,6 @@ form.home{
     float: none;
     display: table-cell; 
   }
-
 
   .parallax {
     position: relative;

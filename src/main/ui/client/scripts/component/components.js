@@ -1,1 +1,0 @@
-var sstComponent = angular.module('sstComponent', [])
