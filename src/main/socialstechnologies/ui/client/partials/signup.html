@@ -14,36 +14,45 @@
 	    <fieldset>
 			<div class="form-group row">
 				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Username:</label>
-				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" >
+				<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-12" >
 					<input type="text" 
 						name="username" 
 						ng-model="$ctrl.registration.username" placeholder="Username" required></input>	
-					<div class="help-block" ng-messages="signUpForm.username.$error" ng-if="signUpForm.username.$touched">
+					<div class="input-group-addon validation" ng-messages="signUpForm.username.$error" ng-if="signUpForm.username.$touched">
 					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+					    <span ng-if="signUpForm.username.$valid" 
+					    	class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
 					</div>	
 				</div>
 				
 			</div>
 			<div class="form-group row">
 				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Password:</label>
-				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12" >
+				<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-12" >
 					<input type="password" name="password" ng-model="$ctrl.registration.password" placeholder="Password" required></input>	
-					<div class="help-block" ng-messages="signUpForm.password.$error" ng-if="signUpForm.password.$touched">
+					<div class="input-group-addon validation" ng-messages="signUpForm.password.$error" ng-if="signUpForm.password.$touched">
 					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+					    <span ng-if="signUpForm.password.$valid" 
+					    	class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
 					</div>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Confirm Password:</label>
-				<div  class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+				<div  class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
 					<input type="password" 
 						name="confirmPassword" 
 						ng-model="$ctrl.registration.confirmPassword" 
 						placeholder="Confirm Password" 
 						required 
 						compare-to="$ctrl.registration.password"></input>	
-					<div class="help-block" ng-messages="signUpForm.confirmPassword.$error" ng-if="signUpForm.confirmPassword.$touched">
+					<div class="input-group-addon validation" ng-messages="signUpForm.confirmPassword.$error" ng-if="signUpForm.confirmPassword.$touched">
 					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+					    <span ng-if="signUpForm.confirmPassword.$valid" 
+					    	class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
 					</div>	
 				</div>
 				
@@ -51,7 +60,6 @@
 	        <div class="form-group row">
 	        	<button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="signUpForm.$invalid" ng-click="$ctrl.submit(signUpForm.$valid)">Submit</button>
 	            <a href="#!/" class="btn btn-default btn-lg btn-block">Cancel</a>
-	            
 	        </div>
 
 			<div class="modal-parent">

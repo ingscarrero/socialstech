@@ -3,6 +3,31 @@ var sstService = angular.module('sstService', ['ngResource']);
 sstService.factory('Content', function($resource, $q, identity){
 	var content = {}
 
+	content.loginConfirmation = function(){
+		var contentProvider = $resource(
+			'/api/sst/content/LoginConfirmation',
+			null,
+			{
+				content: {
+					method: 'GET',
+					isArray: false
+				}
+			}
+		)
+
+		return $q(function(resolve, reject){
+			contentProvider.content().$promise
+				.then(function(response){
+					resolve(response.data)
+					return;
+				}).catch(function(error){
+					console.log(error)
+					reject(error)
+					return;
+				})
+		})
+	}
+
 	content.home = function(){
 		var contentProvider = $resource(
 			'/api/sst/content/Home',
@@ -111,6 +136,62 @@ sstService.factory('Content', function($resource, $q, identity){
 
 	return content;
 })
+
+sstService.factory('Demographics', function($resolve, $q, identity){
+	var demographics = {}
+	var demographicsProvider = $resource(
+			'/api/sst/demographics/:contact_id', null, { 
+				update:{
+					method: 'PUT',
+					isArray: false
+				},
+				get:{
+					method: 'GET',
+					isArray: false
+				}
+			})
+
+
+	demographics.getById = function(contact_id){
+		
+		return $q(function(resolve, reject){
+			demographicsProvider.get(
+				{
+					contact_id: contact_id
+				}
+			).$promise.then((response)=>{
+				resolve(response.data);
+				return;
+			}).catch((error)=>{
+				console.log(error)
+				reject(error)
+				return;
+			});
+		});
+	}
+
+	demographics.update = function(demographics){
+		
+		return $q(function(resolve, reject){
+			demographicsProvider.update(
+				{
+					contact_id: demographics._id
+				}, 
+				demographics
+			).$promise.then((response)=>{
+				resolve(response.data);
+				return;
+			}).catch((error)=>{
+				console.log(error)
+				reject(error)
+				return;
+			});
+		});
+	}
+
+	return demographics;
+})
+
 sstService.factory('Auth', function ($resource, $q, identity) {
 
 	var auth = {}
@@ -158,8 +239,7 @@ sstService.factory('Auth', function ($resource, $q, identity) {
 				reject(error)
 				return;
 			})	
-		})
-		
+		})		
 	}
 
 	auth.isLoggendIn = function(){
@@ -175,8 +255,6 @@ sstService.factory('Auth', function ($resource, $q, identity) {
 	}
 
 	auth.currentIdentity = function(){
-
-
 
 		var securityProvider = $resource(
 		'/api/sst/security/profile', 

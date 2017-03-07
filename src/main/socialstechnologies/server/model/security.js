@@ -46,7 +46,11 @@ module.exports = {
 			mobile: String
 		}, 
 		gender: String,
-		picture: String
+		picture: String,
+		country: {
+			id: String,
+			name: String
+		}
 	})),
 	role: connection.model('role', new Schema({
 		_id: String,

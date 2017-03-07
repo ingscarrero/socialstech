@@ -1,0 +1,109 @@
+<div ng-controller="demographicsController as $ctrl" class="container-fluid modal-target">
+	<form name="demographicsForm" class="demographics form-horizontal" novalidate>
+		<section>
+			<div class="form-group">
+				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Full Name:</label>
+				<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<input type="text" 
+						name="fullName" 
+						ng-model="$ctrl.contact.fullName" 
+						placeholder="Your name" 
+						required></input>	
+					<div class="input-group-addon validation" 
+						ng-messages="demographicsForm.fullName.$error" 
+						ng-if="demographicsForm.fullName.$touched">
+					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+						<span ng-if="demographicsForm.fullName.$valid" 
+							class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Email:</label>
+				<div class="input-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<input type="email" 
+						name="email" 
+						ng-model="$ctrl.contact.email" 
+						placeholder="Your email" 
+						required></input>
+					<div class="input-group-addon validation" 
+						ng-messages="demographicsForm.email.$error" 
+						ng-if="demographicsForm.email.$touched">
+					    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+					    <span ng-if="demographicsForm.email.$valid" 
+					    	class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Phones:
+				</label>
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					<div class="form-group input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="input-group-addon validation">
+							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+						</div>
+						<input type="tel" 
+							name="mobilePhone" 
+							ng-model="$ctrl.contact.phone.mobile" 
+							placeholder="Mobile phone" 
+							></input>
+						<div class="input-group-addon validation" 
+							ng-messages="demographicsForm.mobilePhone.$error" 
+							ng-if="demographicsForm.mobilePhone.$touched">
+						    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+						   	<span ng-if="demographicsForm.mobilePhone.$valid" 
+							class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="form-group input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="input-group-addon validation">
+							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+						</div>
+						<input type="tel" 
+							name="homePhone" 
+							ng-model="$ctrl.contact.phone.home" 
+							placeholder="Home phone" 
+							></input>
+						<div class="input-group-addon validation" 
+							ng-messages="demographicsForm.homePhone.$error" 
+							ng-if="demographicsForm.homePhone.$touched">
+						    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+						    <span ng-if="demographicsForm.homePhone.$valid" 
+							class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="form-group input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="input-group-addon validation">
+							<span class="glyphicon glyphicon-oil" aria-hidden="true"></span>
+						</div>
+						<input type="tel" 
+							title="Phone Number (Format: +99(99)9999-9999)"
+							ng-model="$ctrl.contact.phone.office" 
+							placeholder="Office phone" 
+							name="officeHome"
+							></input>
+						<div class="input-group-addon validation" 
+							ng-messages="demographicsForm.officeHome.$error" 
+							ng-if="demographicsForm.officeHome.$touched">
+						    <div ng-messages-include="/client/partials/validationMessage.html"></div>
+						    <span ng-if="demographicsForm.officeHome.$valid" 
+							class="glyphicon glyphicon-ok green" 
+					    	aria-hidden="true"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+	  			<button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="demographicsForm.$invalid" ng-click="$ctrl.save(demographicsForm.$valid)">Save</button>
+	  			<a href="#!/" class="btn btn-default btn-lg btn-block">Cancel</a>
+	        </div>
+		</section>
+  		<div class="modal-parent">
+    	</div>
+	</form>
+<div>

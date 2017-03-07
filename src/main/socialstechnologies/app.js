@@ -1,13 +1,15 @@
+'use strict';
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var index = require('./routes/index');
 var interaction = require('./routes/interaction');
+var demographics = require('./routes/sst-demographics');
 var sstContent = require('./routes/sst-content');
+var sstMail = require('./routes/sst-mail');
 var sstAccessControl= require('./routes/sst-access-control');
 
 var app = express();
@@ -22,9 +24,10 @@ app.use(express.static(path.join(__dirname, 'ui')));
 
 app.use('/', index);
 app.use('/api/sst/interaction', interaction);
+app.use('/api/sst/demographics', demographics);
 app.use('/api/sst/content', sstContent);
 app.use('/api/sst/security', sstAccessControl);
-
+app.use('/api/sst/mail', sstMail);
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');

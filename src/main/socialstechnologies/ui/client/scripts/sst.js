@@ -5,8 +5,41 @@ var sst = function(){
 		parallax: parallax,
 		stickyHeader: stickyHeader,
 		relocateScroll: relocateScrollToElementWithId,
-		animateElementOnShow: animateElementOnShow
+		animateElementOnShow: animateElementOnShow,
+		toggleValidationError: toggleValidationError 
 	}
+
+	function toggleValidationError(element){
+
+		//var elSelector = '.validation-error'
+
+
+		if (device.tablet() || device.mobile()) {
+			var $target = $(element);
+			cssClass = 'touch-validation-error';
+			if($target.hasClass(cssClass)) {
+				$target.removeClass(cssClass);
+			} else {
+				$target.addClass(cssClass);
+			}
+			/*
+			var $elements = $(elSelector);
+			$elements.each(function(){
+				var $target = $(this);
+				$target.click(function (){
+					var $target = $(this),
+					cssClass = 'touch-validation-error';
+					if(!$target.hasClass(cssClass)) {
+						$target.removeClass(cssClass);
+					} else {
+						$target.addClass(cssClass);
+					}
+				});
+			});*/
+		}
+	}
+
+	
 
 	function animateElementOnShow($, window, document, undefined){
 
@@ -179,5 +212,5 @@ var sst = function(){
 $(document).ready(function(){
 	sst().stickyHeader(jQuery, window, document);
 	sst().parallax(jQuery, window, document);
-	sst().animateElementOnShow(jQuery, window, document);	
+	sst().animateElementOnShow(jQuery, window, document);
 })

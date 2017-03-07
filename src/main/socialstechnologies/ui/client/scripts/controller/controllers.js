@@ -320,7 +320,7 @@ sstController.controller('signUpController', function($uibModal,
     var passwordHash = crypt.hash($ctrl.registration.password)
     Auth.signIn($ctrl.registration.username, passwordHash)
     .then(function(response){
-      $location.path("/");
+      $location.path("/login/confirm");
     }, function(error){
       console.log(error);
       $ctrl.infoTitle = 'User Registration'
@@ -337,6 +337,58 @@ sstController.controller('signUpController', function($uibModal,
     })
 
   }
+})
+
+sstController.controller('loginConfirmController', function(Content, 
+  $sce
+){
+  var $ctrl = this
+
+  $ctrl.retrieveLoginMessage = function(){
+    Content.loginConfirmation().then(function(result){
+        $ctrl.message = result.items[0];
+      }).catch(err=>{
+        console.log(err);
+        var html =  '<p>You have registered successfully. The next step is updating ' +
+                    'some basic demographic information from you.</p>' +
+                    '<a class="btn btn-default" href="#!/demographics">Proceed</a>';
+
+        $ctrl.message = { 
+          imageUrl:''
+          , minHeight:'40em'
+          , title:'Welcome to the party!'
+          , subtitle:'Thank you for join us!'
+          , details:[
+            { text: html
+              , imageUrl:''
+            }
+          ]
+        }
+
+        angular.forEach($ctrl.message.details, function(detail, i){
+          detail.text = $sce.trustAsHtml(detail.text)
+        })
+      })
+  }
+
+  $ctrl.retrieveLoginMessage();
+
+})
+
+sstController.controller('demographicsController', function(Auth){
+  var $ctrl = this;
+  $ctrl.contact = {};
+
+  $ctrl.retrieveContactInformation = function(){
+    Auth.currentIdentity()
+        .then(function(response){
+          $ctrl.contact = response.contact;
+        }, function(error){
+          console.log(error);
+        })
+  }
+
+  $ctrl.retrieveContactInformation();
 })
 
 sstController.controller('loginController', function( $scope, 
@@ -494,8 +546,8 @@ sstController.controller('aboutController', function( $scope,
   Content.about().then(function(response){
     $ctrl.content.items = response.items
     angular.forEach($ctrl.content.items, function(item, i){
-      angular.forEach(item.detail, function(detail, j){
-        detail = $sce.trustAsHtml(detail)
+      angular.forEach(item.details, function(detail, j){
+        detail.text = $sce.trustAsHtml(detail)
       })
     })
   }).catch(function(error){

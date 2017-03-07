@@ -64,6 +64,9 @@ socialSTechnologiesApp.config(['$routeProvider',
   }).when('/login', {
    templateUrl: '/client/partials/login.html',
    requiresSSL: true
+  }).when('/login/confirm', {
+   templateUrl: '/client/partials/login-confirm.html',
+   requiresSSL: true
   }).when('/signup', {
    templateUrl: '/client/partials/signup.html',
    requiresSSL: true
@@ -72,6 +75,9 @@ socialSTechnologiesApp.config(['$routeProvider',
    requiresSSL: true
   }).when('/about/edit', {
    templateUrl: '/client/partials/about-edit.html',
+   requiresSSL: true
+  }).when('/demographics', {
+   templateUrl: '/client/partials/demographics.html',
    requiresSSL: true
   }).otherwise('/')
 }])
@@ -126,6 +132,5 @@ socialSTechnologiesApp.run(function($rootScope,
 
     setActiveItemForPath($location.$$path);
     retrieveUserInformation();
-
   })
 })

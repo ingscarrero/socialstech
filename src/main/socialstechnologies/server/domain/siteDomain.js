@@ -1,8 +1,71 @@
 // siteDomain.js
+'use strict';
+var mailService = require('../config/mail');
 var express = require('express');
 var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
 var model = require('../model/socialstechnologies');
 var supportEmail = 'support@socialstechnologies.com';
+
+
+let mailTransporter = nodemailer.createTransport(mailService.sst);
+function readMails(filter){
+}
+function sendMail(mail){
+	return new Promise(function(resolve, reject){
+		if (!mail) {
+			reject(generateRequestError('The mail to be sended has not information or is invalid'));
+			return;
+		} else {
+
+			if (!mail.createdBy) {
+				reject(generateBusinessError(400, 'The information from the mail creator is required.'));
+			}
+
+			model.mail({
+				_id: 		mongoose.Types.ObjectId(),
+				createdBy: 	{
+								_id: mail.createdBy._id,
+								on: Date()
+							},
+				status: 	'scheduled',
+				from: 		'info@socialstechnologies.com',
+				to: 		mail.to,
+				subject: 	mail.title,
+				text: 		mail.plainText,
+				html: 		mail.html,
+				service: 	mailService.service
+			}).then(function(err, registeredMail){
+				if (!err) {
+					mailTransporter.sendMail(registeredMail, (error, result)=>{
+						if (!error) {
+							registeredMail.status = 'delivered';
+							registeredMail.save(function(err, updatedMail){
+								if (!err) {
+									resolve(updatedMail);
+									return;	
+								} else {
+									var error = generateAPIError(err);
+									registeredMail.error = error;
+									resolve(registeredMail);
+									return;
+								}
+								
+							})
+						} else {
+							registeredMail.status = 'pending';
+							registeredMail.error = error;
+
+						}
+					})
+				} else {
+					reject(generateAPIError(err));
+					return;
+				}
+			})
+		}
+	})
+}
 
 function readSSTContents(name){
 	return new Promise(function(resolve,reject){
@@ -148,25 +211,25 @@ function setSSTContent(content){
 						}
 
 						var newContent = model.content({
-							_id: mongoose.Types.ObjectId(),
-							createdBy:{
-								_id: content.createdBy._id,
-								on: Date()
-							},
-							name: content.name,
-							isActive: true,
-							items: [
-								{	imageUrl:''
-									, minHeight:'10em'
-									, title:''
-									, subtitle:''
-									, details:[
-										{	text:''
-											, imageUrl:''
-										}
-									]
-								}
-							]
+							_id: 		mongoose.Types.ObjectId(),
+							createdBy:  {
+											_id: 	content.createdBy._id,
+											on: 	Date()
+										},
+							name: 		content.name,
+							isActive: 	true,
+							items: 		[
+											{	imageUrl: 		''
+												, minHeight: 	'10em'
+												, title: 		''
+												, subtitle: 	''
+												, details:  	[
+																	{	text: 		''
+																		, imageUrl: ''
+																	}
+												]
+											}
+										]
 						})
 
 						newContent.save(function(err, registeredContent){
@@ -205,18 +268,18 @@ function createInteraction(interaction){
 			}
 
 			var newInteraction = model.interaction({
-				_id: mongoose.Types.ObjectId(),
-				createdBy: {
-					customer: {
-						name: interaction.name,
-						email: interaction.email
-					}, 
-					on: Date()
+				_id: 		mongoose.Types.ObjectId(),
+				createdBy: 	{
+								customer: 	{
+												name: 	interaction.name,
+												email: 	interaction.email
+								}, 
+								on: Date()
 				},
-				subject: interaction.subject,
-				type: 'ContactRequest',
-				details: interaction.details,
-				status: 'Created'
+				subject: 	interaction.subject,
+				type: 		'ContactRequest',
+				details: 	interaction.details,
+				status: 	'Created'
 			})
 			newInteraction.save(function(err, registeredInteraction){
 				if (!err) {
@@ -265,5 +328,9 @@ module.exports = {
 	content:{
 		read: readSSTContents,
 		set: setSSTContent
+	},
+	mail:{
+		read: readMails,
+		send: sendMail
 	}
 }

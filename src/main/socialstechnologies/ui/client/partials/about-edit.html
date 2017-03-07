@@ -41,62 +41,74 @@
 			<section>
 				<div class="form-group row">
 					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Title:</label>
-					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+					<div class="input-group col-lg-8 col-md-8 col-sm-12 col-xs-12" >
 						<input 
 							ng-model="$ctrl.content.items[$itemIndex]['title']"
 							name="items_{{$itemIndex}}_title"
 							required>
-						<div class="help-block" 
+						<div class="input-group-addon validation" 
 							ng-messages="contentForm[ 'items_' + $itemIndex + '_title'].$error" 
 							ng-if="contentForm[ 'items_' + $itemIndex + '_title'].$touched">
 						    <div 
 						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						    <span ng-if="contentForm[ 'items_' + $itemIndex + '_title'].$valid" 
+					    		class="glyphicon glyphicon-ok green" 
+					    		aria-hidden="true"></span>
 						</div>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Image URL:</label>
-					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div class="input-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
 						<input type="url"
 								ng-model="$ctrl.content.items[$itemIndex]['imageUrl']"
 								name="items_{{$itemIndex}}_imageUrl"
 								class="font-small" 
 								required>
-						<div class="help-block" 
+						<div class="input-group-addon validation" 
 							ng-messages="contentForm[ 'items_' + $itemIndex + '_imageUrl'].$error" 
 							ng-if="contentForm[ 'items_' + $itemIndex + '_imageUrl'].$touched">
 						    <div 
 						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						   	<span ng-if="contentForm[ 'items_' + $itemIndex + '_imageUrl'].$valid" 
+					    		class="glyphicon glyphicon-ok green" 
+					    		aria-hidden="true"></span>
 						</div>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Minimun Height:</label>
-					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div class="input-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
 						<input type="text" 
 							ng-model="$ctrl.content.items[$itemIndex]['minHeight']" 
 							name="items_{{$itemIndex}}_minHeight"
 							required>
-						<div class="help-block" 
+						<div class="input-group-addon validation" 
 							ng-messages="contentForm[ 'items_' + $itemIndex + '_minHeight'].$error" 
 							ng-if="contentForm[ 'items_' + $itemIndex + '_minHeight'].$touched">
 						    <div 
 						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						    <span ng-if="contentForm[ 'items_' + $itemIndex + '_minHeight'].$valid" 
+					    		class="glyphicon glyphicon-ok green" 
+					    		aria-hidden="true"></span>
 						</div>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Subtitle:</label>
-					<div  class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+					<div  class="input-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
 						<input type="text"
 							ng-model="$ctrl.content.items[$itemIndex]['subtitle']"
 							name="items_{{$itemIndex}}_subtitle"
 							required>
-						<div class="help-block" 
+						<div class="input-group-addon validation" 
 							ng-messages="contentForm[ 'items_' + $itemIndex + '_subtitle'].$error" 
 							ng-if="contentForm[ 'items_' + $itemIndex + '_subtitle'].$touched">
 						    <div 
 						    	ng-messages-include="/client/partials/validationMessage.html"></div>
+						    <span ng-if="contentForm[ 'items_' + $itemIndex + '_subtitle'].$valid" 
+					    		class="glyphicon glyphicon-ok green" 
+					    		aria-hidden="true"></span>
 						</div>
 					</div>
 				</div>
@@ -133,26 +145,30 @@
 					<section>
 						<div class="form-group row">
 							<label class="col-lg-4 col-md-4 col-sm-12 col-xs-12">Image URL:</label>
-							<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							<div class="input-group col-lg-8 col-md-8 col-sm-12 col-xs-12">
 								<input type="url"
 									class="font-small"
 									name="items_{{$itemIndex}}_details_{{$detailIndex}}_imageUrl" 
 									ng-model="$ctrl.content.items[$itemIndex]['details'][$detailIndex]['imageUrl']"
 									required>
-								<div class="help-block" 
+								<div class="input-group-addon validation" 
 									ng-messages="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
 									'_imageUrl'].$error" 
 									ng-if="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
 									'_imageUrl'].$touched">
 								    <div 
 								    	ng-messages-include="/client/partials/validationMessage.html"></div>
+								    <span ng-if="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
+									'_imageUrl'].$valid" 
+					    				class="glyphicon glyphicon-ok green" 
+					    				aria-hidden="true"></span>
 								</div>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Text:
 							</label>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<textarea 
 									ng-model="$ctrl.content.items[$itemIndex]['details'][$detailIndex]['text']" 
 									ng-change="$ctrl.renderHtml($itemIndex, $detailIndex)"
@@ -160,13 +176,17 @@
 									name="items_{{$itemIndex}}_details_{{$detailIndex}}_text"
 									required>	
 								</textarea>
-								<div class="help-block" 
+								<div class="input-group-addon validation" 
 									ng-messages="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
 									'_text'].$error" 
 									ng-if="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
 									'_text'].$touched">
 								    <div 
 								    	ng-messages-include="/client/partials/validationMessage.html"></div>
+								    <span ng-if="contentForm[ 'items_' + $itemIndex + '_details_' + $detailIndex +
+									'_text'].$valid" 
+					    				class="glyphicon glyphicon-ok green" 
+					    				aria-hidden="true"></span>
 								</div>
 							</div>							
 						</div>

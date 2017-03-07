@@ -1,0 +1,27 @@
+<div ng-controller="loginConfirmController as $ctrl" parallax ng-cloak>
+	<section>
+		<div class="parallax" style="background-image:url('{{$ctrl.message.imageUrl}}');min-height:{{$ctrl.message.minHeight}}">
+			<h1 ng-bind="$ctrl.message.title"></h1>
+		</div>
+		<div>
+			<header class="about-header">
+				<h2 ng-bind="$ctrl.message.subtitle"></h2>
+			</header>
+			<article class="about-content">
+				<section ng-repeat="detail in $ctrl.message.details" class="row container-fluid accessory-collection" >
+					
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 accessory-container" >
+						<div 
+							ng-if="detail.imageUrl" 
+							class="accessory about" 
+							style="background-image: url('{{detail.imageUrl}}');">
+						</div>
+					</div>
+					<div ng-bind-html="detail.text" 
+						class="col-lg-8 col-md-8 col-sm-12 col-xs-12 accessory-content">
+					</div>
+				</section>
+			</article>
+		</div>
+	</section>
+<div>

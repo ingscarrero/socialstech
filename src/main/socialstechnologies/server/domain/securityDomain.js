@@ -490,8 +490,69 @@ function createContact(full_name, email, phones){
 	});
 }
 
-function updateContact(full_name, email, phones, country){
-	
+function updateContact(contact_id, 
+	full_name, 
+	email, 
+	phones, 
+	country,
+	gender,
+	picture, 
+	modifiedBy
+){
+	return new Promise(function(resolve, reject){
+		if (!contact_id) {
+			var err = {
+				code: 404,
+				message: 'The provided information for updating contact information is incomplete or invalid.',
+				error: 'Invalid contact identifier.'
+			}
+			reject(err);
+			return;
+		}
+
+		if (!modifiedBy) {
+			var err = {
+				code: 404,
+				message: 'The provided information for updating contact information is incomplete or invalid.',
+				error: 'Invalid modifier user information. The field [modifiedBy] is mandatory'
+			}
+			reject(err);
+			return;
+		}
+
+		findContactById(contact_id).then((contact)=>{
+			if(contact){
+				
+				contact.full_name 	=	full_name	? 	full_name 	: 	contact.full_name;
+				contact.email 		=	email 		? 	email 		: 	contact.email;
+				contact.phones 		=	phones 		?	phones 		: 	contact.phones;
+				contact.country 	=	country 	? 	country 	: 	contact.country;
+				contact.gender 		=	gender 		?	gender 		: 	contact.gender;
+				contact.picture 	=	picture 	?	picture 	: 	contact.picture;
+
+				contact.save(function(err, updatedContact){
+					if(!err){
+						resolve(updateContact);
+					} else {
+						reject(err);
+					}
+					return;
+				});
+			} else {
+				var err = {
+					code: 404,
+					message: 'Invalid password. There were no matches either for provided login or password.',
+					error: 'Invalid password.'
+				}
+				reject(err);
+				return;
+			}
+
+		}).catch((err)=>{
+			reject(err);
+			return;
+		})
+	})
 }
 
 function findContactById(contactIdentifier){
@@ -655,7 +716,8 @@ module.exports = {
 		findById: findUserById
 	},
 	contact: {
-		findById: findContactById
+		findById: findContactById,
+		update: updateContact
 	},
 	credential: {
 		find: findCredential
