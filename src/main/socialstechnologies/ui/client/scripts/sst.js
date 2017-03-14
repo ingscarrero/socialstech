@@ -1,5 +1,5 @@
 
-'strict';
+'use strict';
 var sst = function(){
 	var sstDefinition = {
 		parallax: parallax,
@@ -126,9 +126,9 @@ var sst = function(){
 	function parallax($, window, document, undefined) {
 		var speed = 3,
 		elemSelector = '.parallax',
-		elemCssClass = 'fixed'
+		elemCssClass = 'fixed',
 		$window = $(window),
-		$document = $(document),
+		$document = $(document);
 		
 
 		$document.ready(function(){

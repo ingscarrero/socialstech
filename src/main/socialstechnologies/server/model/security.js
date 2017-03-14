@@ -1,3 +1,4 @@
+'use strict';
 var mongoose = require('mongoose');
 console.log('Will connect to security model at: ' + process.env.MONGO_DB_SECURITY);
 var connection = mongoose.createConnection(process.env.MONGO_DB_SECURITY);
@@ -8,12 +9,16 @@ module.exports = {
 		_id: String,
 		login: String,
 		password: String,
+		isActive: Boolean,
+		identityId: String,
 		createdBy: {
 			_id: String,
 			on: Date
 		},
-		isActive: Boolean,
-		identityId: String
+		modifiedBy: {
+			_id: String,
+			on: Date
+		}
 	})),
 	identity: connection.model('identity', new Schema({
 		_id: String,
@@ -24,6 +29,10 @@ module.exports = {
 		createdBy: {
 			_id: String,
 			on: Date
+		},
+		modifiedBy: {
+			_id: String,
+			on: Date
 		}
 	})),
 	user:  connection.model('user', new Schema({
@@ -31,10 +40,16 @@ module.exports = {
 		name: String,
 		contactId: String,
 		roles: [],
+		isApproved: Boolean,
+		isActive: Boolean,
 		createdBy: {
 			_id: String,
 			on: Date
 		},
+		modifiedBy: {
+			_id: String,
+			on: Date
+		}
 	})),
 	contact:  connection.model('contact', new Schema({
 		_id: String,
@@ -48,8 +63,16 @@ module.exports = {
 		gender: String,
 		picture: String,
 		country: {
-			id: String,
+			_id: String,
 			name: String
+		},
+		createdBy: {
+			_id: String,
+			on: Date
+		},
+		modifiedBy: {
+			_id: String,
+			on: Date
 		}
 	})),
 	role: connection.model('role', new Schema({
@@ -57,6 +80,10 @@ module.exports = {
 		name: String,
 		isActive: Boolean,
 		createdBy: {
+			_id: String,
+			on: Date
+		},
+		modifiedBy: {
 			_id: String,
 			on: Date
 		}

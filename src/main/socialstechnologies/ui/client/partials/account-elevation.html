@@ -1,0 +1,44 @@
+<section ng-controller="accountElevationController as $ctrl" class="container-fluid modal-target">
+    <form permission="['user']" name="elevationForm" class="elevation form-horizontal" nonvalidate>
+        <aside class="actions actions-contact">
+            <div ng-if="elevationForm.$valid" ng-click="$ctrl.deny(elevationForm.$valid)" ng-disabled="elevationForm.$invalid">
+                <img src="/client/resources/icons/cancel-xxl.png" class="fill">
+            </div>
+            <div ng-if="elevationForm.$valid" ng-click="$ctrl.approve(elevationForm.$valid)" ng-disabled="elevationForm.$invalid">
+                <img src="/client/resources/icons/ok-xxl.png" class="fill">
+            </div>
+        </aside>
+        <legend>
+            <h1>Account Elevation</h1>
+        </legend>
+        <p>
+            You are about to process the user's account elevation request from the user.
+        </p>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <h1>Title</h1>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <h1>Details</h1>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <h1>Date</h1>
+            </div>
+        </div>
+        <div ng-repeat-start="item in $ctrl.request.details" class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <span ng-bind="item.title"></span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <span ng-bind-html="item.details"></span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <span ng-bind="item.date | date:'MM/dd/yyyy HH:mm'"></span>
+            </div>
+
+        </div>
+        <hr ng-repeat-end>
+        <div class="modal-parent">
+        </div>
+    </form>
+</section>
