@@ -1,3 +1,4 @@
+'use strict';
 var securityDomain = require('../domain/securityDomain');
 var express = require('express');
 var util = require('./util');
