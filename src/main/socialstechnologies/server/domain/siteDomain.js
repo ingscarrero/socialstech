@@ -49,7 +49,7 @@ function generateElevationRequest(
 		var contactDescription =
 			'Name: ' + elevationRequestContact.fullName + '\n' +
 			'Email: ' + elevationRequestContact.email + '\n' +
-			'Phone: ' + elevationRequestContact.phone + '\n';
+			'Phone: ' + elevationRequestContact.phones.mobile + '\n';
 
 		submitRequest(util.constants.request.types.elevation, {
 			from: userId,

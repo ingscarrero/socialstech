@@ -8,20 +8,16 @@
 				<h2 ng-bind="$ctrl.message.subtitle"></h2>
 			</header>
 			<article class="about-content">
-				<section ng-repeat="detail in $ctrl.message.details" class="row container-fluid accessory-collection" >
-					
-					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 accessory-container" >
-						<div 
-							ng-if="detail.imageUrl" 
-							class="accessory about" 
-							style="background-image: url('{{detail.imageUrl}}');">
+				<section ng-repeat="detail in $ctrl.message.details" class="row container-fluid accessory-collection">
+
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 accessory-container">
+						<div ng-if="detail.imageUrl" class="accessory about" style="background-image: url('{{detail.imageUrl}}');">
 						</div>
 					</div>
-					<div ng-bind-html="detail.text" 
-						class="col-lg-8 col-md-8 col-sm-12 col-xs-12 accessory-content">
+					<div ng-bind-html="detail.text" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 accessory-content">
 					</div>
 				</section>
 			</article>
 		</div>
 	</section>
-<div>
+	<div>
