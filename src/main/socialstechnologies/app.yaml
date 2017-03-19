@@ -24,8 +24,6 @@ env: flex
 # [START other]
 env_variables: 
   NODE_ENV: 'production'
-  PORT: 8080
-  S_PORT: 10443
   MONGO_DB_SECURITY: mongodb://socialstech:G5XsQwD0wzdZz4ox@cluster0-shard-00-00-z6umu.mongodb.net:27017,cluster0-shard-00-01-z6umu.mongodb.net:27017,cluster0-shard-00-02-z6umu.mongodb.net:27017/security?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
   MONGO_DB_BDOMAIN: mongodb://socialstech:G5XsQwD0wzdZz4ox@cluster0-shard-00-00-z6umu.mongodb.net:27017,cluster0-shard-00-01-z6umu.mongodb.net:27017,cluster0-shard-00-02-z6umu.mongodb.net:27017/socialstechnologies?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
 # [END other]
