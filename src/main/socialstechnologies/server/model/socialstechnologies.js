@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var mongodbUri = require('mongodb-uri');
 var dbUri = process.env.MONGO_DB_BDOMAIN;
 
-console.log('Will connect to business model at:' + dbUri);
+console.log('Will connect to business model at: ' + dbUri);
 var connection = mongoose.createConnection(dbUri);
 var Schema = mongoose.Schema;
 
