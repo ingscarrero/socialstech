@@ -118,9 +118,6 @@ socialSTechnologiesApp.run(function ($rootScope,
 
   $rootScope.$on('$routeChangeStart', function (event, next) {
 
-    var port = 3000;
-    var securePort = 4000;
-
     Auth.isResourceAllowed(next).then((result) => {
 
       if (result === false) {
@@ -128,7 +125,8 @@ socialSTechnologiesApp.run(function ($rootScope,
         $location.path('/login').search('url_redirect', redirectTo)
         $scope.apply();
       } else if (next.requiresSSL && $location.protocol() !== 'https') {
-        $window.location.href = $location.absUrl().replace('http', 'https').replace(port, securePort);
+        var newLocation = $location.absUrl().por
+        $window.location.href = $location.absUrl().replace('http', 'https');
       }
 
     }).catch((err) => {
