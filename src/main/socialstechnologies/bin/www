@@ -21,10 +21,10 @@ var ops = {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
+var port = normalizePort(process.env.PORT || '80');
 app.set('port', port);
 
-var sPort = normalizePort(process.env.PORT || '443');
+var sPort = normalizePort(process.env.SSLPORT || '443');
 app.set('secure_port', sPort);
 /**
  * Create HTTP server.
