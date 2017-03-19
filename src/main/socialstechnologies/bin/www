@@ -21,11 +21,11 @@ var ops = {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-var sPort = normalizePort(process.env.SSLPORT || '443');
-app.set('secure_port', sPort);
+var sslPort = normalizePort(process.env.SSLPORT || '4000');
+app.set('secure_port', sslPort);
 /**
  * Create HTTP server.
  */
@@ -40,7 +40,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-secureServer.listen(sPort);
+secureServer.listen(sslPort);
 secureServer.on('error', onError);
 secureServer.on('listening', onListening);
 
