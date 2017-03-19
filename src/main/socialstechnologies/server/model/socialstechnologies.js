@@ -1,20 +1,10 @@
 'use strict';
 var mongoose = require('mongoose');
 var mongodbUri = require('mongodb-uri');
-var dbUri = 'mongodb://socialstech:G5XsQwD0wzdZz4ox@cluster0-shard-00-00-z6umu.mongodb.net:27017?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin'; //process.env.MONGO_DB_BDOMAIN);
-var options = {
-	db: {
-		native_parser: true
-	},
-	server: {
-		poolSize: 5
-	},
-	replset: {
-		rs_name: 'Cluster0-shard-0'
-	}
-}
+var dbUri = process.env.MONGO_DB_BDOMAIN;
+
 console.log('Will connect to business model at:' + dbUri);
-var connection = mongoose.createConnection(dbUri, options);
+var connection = mongoose.createConnection(dbUri);
 var Schema = mongoose.Schema;
 
 module.exports = {
