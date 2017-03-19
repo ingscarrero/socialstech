@@ -1,21 +1,10 @@
 'use strict';
 var mongoose = require('mongoose');
-var options = {
-	server: {
-		socketOptions: {
-			keepAlive: 300000,
-			connectTimeoutMS: 30000
-		}
-	},
-	replset: {
-		socketOptions: {
-			keepAlive: 300000,
-			connectTimeoutMS: 30000
-		}
-	}
-};
-console.log('Will connect to business model at:' + process.env.MONGO_DB_BDOMAIN);
-var connection = mongoose.createConnection(process.env.MONGO_DB_BDOMAIN, options);
+var mongodbUri = require('mongodb-uri');
+var dbUri = mongodbUri.formatMongoose(process.env.MONGO_DB_BDOMAIN);
+
+console.log('Will connect to business model at:' + dbUri);
+var connection = mongoose.createConnection(dbUri);
 var Schema = mongoose.Schema;
 
 module.exports = {
