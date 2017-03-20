@@ -1,14 +1,21 @@
 // siteDomain.js
 'use strict';
 var mailService = require('../config/mail');
+
 var express = require('express');
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var model = require('../model/socialstechnologies');
 var util = require('../shared/util');
 var securityDomain = require('./securityDomain');
+var sparkPostTransport = require('nodemailer-sparkpost-transport');
 
-let mailTransporter = nodemailer.createTransport(mailService.sst);
+let mailOptions = {
+	sparkPostApiKey: mailService.sst.secret
+};
+let mailTransporter = nodemailer.createTransport(sparkPostTransport(mailOptions));
+
+//let mailTransporter = nodemailer.createTransport(mailService.sst);
 
 // Profile Elevation
 function generateElevationRequest(

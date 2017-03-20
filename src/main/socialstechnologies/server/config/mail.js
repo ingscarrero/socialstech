@@ -1,15 +1,5 @@
 module.exports = {
-	sst:{
-		host: 'smtp.office365.com', // Office 365 server
-        port: 587,     // secure SMTP
-        secure: false,
-        tls: {
-            ciphers: 'SSLv3'
-        },
-        requireTLS: true,
-		auth:{
-			user:'scarrero@socialstechnologies.com',
-			pass:'Ti.871226'
-		}
+	sst: {
+		secret: 'e6b9e42db03c9b04c3fdb8dbdd0dbce738adccda'
 	}
 }
