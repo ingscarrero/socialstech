@@ -126,7 +126,7 @@ socialSTechnologiesApp.run(function ($rootScope,
         $scope.apply();
       } else if (next.requiresSSL && $location.protocol() !== 'https') {
         var newLocation = $location.absUrl().por
-        $window.location.href = $location.absUrl().replace('http', 'https').replace('3000', '4000');
+        $window.location.href = $location.absUrl().replace('http', 'https');
       }
 
     }).catch((err) => {
