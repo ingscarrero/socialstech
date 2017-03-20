@@ -70,7 +70,7 @@ var utilsModule = function () {
         var error = {
             status: 500,
             code: errorInformation.code,
-            message: 'Ops! I\'m afraid to tell you something went wrong. Please try again. If the problem persists report the issue via <a href="mailto:' + constants.supportmail + '"><strong>mail</strong></a>.',
+            message: 'Ops! I\'m afraid to tell you something went wrong. Please try again. If the problem persists report the issue via <a href="mailto:' + utils.constants.supportmail + '"><strong>mail</strong></a>.',
             error: errorInformation.description
         }
         return error;
