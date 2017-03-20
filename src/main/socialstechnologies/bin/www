@@ -42,7 +42,7 @@ server.on('listening', onListening);
 
 secureServer.listen(sslPort);
 secureServer.on('error', onError);
-secureServer.on('listening', onListening);
+secureServer.on('listening', onSSLListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -101,5 +101,13 @@ function onListening() {
   var bind = typeof addr === 'string' ?
     'pipe ' + addr :
     'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
+}
+
+function onSSLListening() {
+  var addr = secureServer.address();
+  var bind = typeof addr === 'string' ?
+    'pipe ' + addr :
+    'port ' + addr.port;
+  console.log('Listening on ' + bind);
 }
